@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   version: 1.0.0
   title: Retail Backend
-  description: Retail backend database used for Apigee API Engineer training class
+  description: Retail backend database used for ApiDays 2019
   contact:
     name: Google Cloud (Apigee)
     email: apigee@example.org
@@ -12,7 +12,7 @@ info:
     url: https://opensource.org/licenses/MIT
 servers:
   - url: "https://emea-poc8-test.apigee.net/v1/retail"
-    description: Retail backend for Apigee API Engineer training
+    description: Retail backend for ApiDays 2019
 tags:
   - name: categories
     description: Product Categories
@@ -383,6 +383,8 @@ components:
           minimum: 0
         location:
           $ref: "#/components/schemas/Location"
+        products:
+          $ref: "#/components/schemas/ProductInStoreArray"
         name:
           description: store name
           type: string
@@ -447,11 +449,32 @@ components:
           format: float
           minimum: -180
           maximum: 180
+    ProductInStoreArray:
+      type: array
+      description: list of products in a store
+      items:
+        $ref: '#/components/schemas/ProductInStore'
+    ProductInStore:
+      type: object
+      description: product and quantity in a store
+      required:
+        - id
+        - quantity
+      properties:
+        id:
+          description: product's id
+          type: string
+        quantity:
+          description: number of items in a store
+          type: number
+          format: integer
     Product:
       type: object
       description: product
       required:
         - category
+        - listPrice
+        - brand
         - image
         - name
         - overall_rating
@@ -460,6 +483,13 @@ components:
       properties:
         category:
           description: category name
+          type: string
+        listPrice:
+          description: price in US dollar
+          type: number
+          format: float
+        brand:
+          description: product's brand
           type: string
         image:
           description: image url
