@@ -1,8 +1,8 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title: Retail Backend
-  description: Retail backend database access
+  title: Retail API
+  description: Retail API Product - interact with stores, orders, categories
   contact:
     name: Google Cloud (Apigee)
     email: apigee@example.org
@@ -12,7 +12,7 @@ info:
     url: https://opensource.org/licenses/MIT
 servers:
   - url: "https://amer-cs-hybrid-demo12-test.hybrid-apigee.net/v1/retail"
-    description: Retail backend
+    description: Retail backend 
 tags:
   - name: categories
     description: Product Categories
