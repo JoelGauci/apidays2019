@@ -508,8 +508,8 @@ components:
           type: string
         quantity:
           description: number of items in a store
-          type: number
-          format: integer
+          type: integer
+          format: int32
     Product:
       type: object
       description: product
